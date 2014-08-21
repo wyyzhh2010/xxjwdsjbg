@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.xxjwd.sjbg.ZhiBanActivity" >
+
+    <item
+        android:id="@+id/action_show_date_dialog"
+        android:icon="@drawable/ic_action_time"
+        android:orderInCategory="100"
+        android:showAsAction="ifRoom"
+        android:title="日期"/>
+
+</menu>

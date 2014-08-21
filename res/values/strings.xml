@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="FenGe">^^</string>
+    <string name="ani_time">250</string>
+    <string name="ani_time2">500</string>
+    <string name="ani_timestartof">150</string>
+    <string name="app_name">新乡机务段</string>
+    <string name="action_settings">设置</string>
+    <string name="hello_world">标题</string>
+    <string name="query">查询</string>
+    <string name="gwfj">附件</string>
+    <string name="login_label_username">工号</string>
+    <string name="login_username_hint">请输入您的工号</string>
+    <string name="login_label_password">密码</string>
+    <string name="login_label_signin">登录</string>
+    <string name="login_label_auto_login">自动登录</string>
+    <string name="login_label_savepwd">记住密码</string>
+    <string name="str_Product_Gwxx">公文处理</string>
+    <string name="str_Product_Xjzb">新机值班</string>
+    <string name="str_Product_Xjyx">新机邮箱</string>
+    <string name="str_Product_Scjb">生产简报</string>
+    <string name="str_Product_Ldjh">领导讲话</string>
+    <string name="str_Product_Tqyj">特请预警</string>
+    <string name="str_Product_Dxpt">短信平台</string>
+    <string name="str_Product_Xwxx">新闻信息</string>
+    <string name="image_content">Image</string>
+    <string name="title_activity_zhi_ban">值班查询</string>
+    <string name="title_activity_gong_wen_qs">公文签收</string>
+    <string name="title_activity_activity_xin_wen">新闻信息</string>
+    <string name="title_activity_activity_sheng_chan">生产简报</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="title_activity_test">Test</string>
+
+</resources>

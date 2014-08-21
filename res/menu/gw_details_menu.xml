@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.xxjwd.sjbg.GongWenQS" >
+
+    <item
+        android:id="@+id/gw_details_sign"
+        android:icon="@drawable/ic_action_edit"
+        android:showAsAction="ifRoom"
+        android:title="签收"/>
+
+</menu>

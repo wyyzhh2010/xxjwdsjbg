@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xxjwd.sjbg"
+    android:versionCode="10"
+    android:versionName="0.2.3.5" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FIFESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:name="com.zcj.lib.MyApp"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.xxjwd.sjbg.MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.xxjwd.sjbg.GongWenDetailActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.xxjwd.sjbg.GongWenListActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.xxjwd.sjbg.TeQingJieShouActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.xxjwd.sjbg.TeQingChaXunDetailActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.xxjwd.sjbg.AppStartActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.xxjwd.sjbg.LoginActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.xxjwd.sjbg.ZhiBanActivity"
+            android:label="@string/title_activity_zhi_ban" >
+        </activity>
+        <activity android:name="com.xxjwd.sjbg.TeQingListActivity" >
+        </activity>
+        <activity android:name="com.xxjwd.sjbg.TuPianXinWenActivity" >
+        </activity>
+        <activity android:name="com.xxjwd.sjbg.TuPianXinWenDetailActivity" >
+        </activity>
+        <activity
+            android:name="com.xxjwd.sjbg.GongWenSignActivity"
+            android:label="@string/title_activity_gong_wen_qs" >
+        </activity>
+        <activity
+            android:name="com.xxjwd.sjbg.XinWenActivity"
+            android:label="@string/title_activity_activity_xin_wen" >
+        </activity>
+        <activity
+            android:name="com.xxjwd.sjbg.ShengChanActivity"
+            android:label="@string/title_activity_activity_sheng_chan" >
+        </activity>
+        <activity
+            android:name="com.xxjwd.sjbg.Test"
+            android:label="@string/title_activity_test" >
+        </activity>
+    </application>
+
+</manifest>
