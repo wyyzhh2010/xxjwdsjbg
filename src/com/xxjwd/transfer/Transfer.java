@@ -21,6 +21,8 @@ import com.xxjwd.classes.Instruction;
 import com.xxjwd.classes.JianBao;
 import com.xxjwd.classes.Product;
 import com.xxjwd.classes.RegisterInfo;
+import com.xxjwd.classes.TEST1;
+import com.xxjwd.classes.TEST2;
 import com.xxjwd.classes.TeQing;
 import com.xxjwd.classes.User;
 import com.xxjwd.classes.UserGw;
@@ -81,6 +83,11 @@ public class Transfer {
         else
         {
         	envelope.addMapping(nameSpace, rClass.getClass().getSimpleName() ,rClass.getClass());
+        	/*if (methodName.equals("forTest"))
+        	{
+        		TEST1 t= new TEST1();
+        		envelope.addMapping(nameSpace, t.getClass().getSimpleName() ,t.getClass());
+        	}*/
         }
         StringWriter   sw=new   StringWriter();  
         PrintWriter pw = new PrintWriter(sw);
@@ -137,6 +144,9 @@ public class Transfer {
 				break;	
 			case "邮件服务":
 				pro.setServicePage("youjianService.asmx");
+				break;
+			case "位置服务":
+				pro.setServicePage("weizhiService.asmx");
 				break;	
 			default:
 					return null;
@@ -555,6 +565,8 @@ public class Transfer {
 		para[1] = new Parameter("mailBoxName",mailboxName);
 		return (WenJianJia)getWebService("邮件服务" ,"selectMailBox",para,new WenJianJia());
 	}
+	
+
 
 	public static int isIn() {
 		// TODO Auto-generated method stub

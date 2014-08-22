@@ -2,9 +2,29 @@ package com.zcj.util;
 
 import java.util.Random;
 
+import com.xxjwd.classes.YouJianDiZhi;
+
 public class StringUtil {
 	
 	/** 判断是否是 "" 或者 null */
+	
+	public static String strFuHaoKaiShi = "$$";
+	public static String strFuHaoFenGe = "^^";
+	public static String strFuHaoYouJian = ";;";
+	
+	public static YouJianDiZhi[] toYouJianDiZhi(String strYjdz)
+	{
+		if (strYjdz.contains(strFuHaoYouJian) == false) return null;
+		String[] strYjdzs = strYjdz.split(strFuHaoYouJian);
+		YouJianDiZhi[] yjdzs = new YouJianDiZhi[strYjdzs.length];
+		for(int i=0;i<yjdzs.length ;i++)
+		{
+			yjdzs[i] = new YouJianDiZhi();
+			yjdzs[i].LoadFrom(strYjdzs[i]);
+		}
+	}
+	
+	
 	public static boolean isEmpty(String str) {
 		if (str != null && !"".equals(str)) {
 			return false;

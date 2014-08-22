@@ -6,6 +6,8 @@ import java.util.Hashtable;
 import org.ksoap2.serialization.KvmSerializable;
 import org.ksoap2.serialization.PropertyInfo;
 
+import com.zcj.util.StringUtil;
+
 public class YouJianDiZhi implements KvmSerializable,Serializable {
 	/**
 	 * 
@@ -13,8 +15,7 @@ public class YouJianDiZhi implements KvmSerializable,Serializable {
 	private static final long serialVersionUID = 1361211712565087283L;
 	private String address;
 	private String displayname;
-	private String host;
-	private String user;
+
 	
 	public String getAddress() {
 		return address;
@@ -28,18 +29,7 @@ public class YouJianDiZhi implements KvmSerializable,Serializable {
 	public void setDisplayname(String displayname) {
 		this.displayname = displayname;
 	}
-	public String getHost() {
-		return host;
-	}
-	public void setHost(String host) {
-		this.host = host;
-	}
-	public String getUser() {
-		return user;
-	}
-	public void setUser(String user) {
-		this.user = user;
-	}
+	
 	@Override
 	public Object getProperty(int arg0) {
 		// TODO Auto-generated method stub
@@ -62,14 +52,7 @@ public class YouJianDiZhi implements KvmSerializable,Serializable {
 		   arg2.type = PropertyInfo.STRING_CLASS;
 		   arg2.name = "DisplayName";
 		   break;
-		  case 2:
-			   arg2.type = PropertyInfo.STRING_CLASS;
-			   arg2.name = "Host";
-			   break;
-		  case 3:
-			   arg2.type = PropertyInfo.STRING_CLASS;
-			   arg2.name = "User";
-			   break;
+	
 		 
 		  default:
 		   break;
@@ -86,15 +69,31 @@ public class YouJianDiZhi implements KvmSerializable,Serializable {
 		   case 1:
 		    this.displayname = arg1.toString();
 		    break;
-		   case 2:
-			    this.host = arg1.toString();
-			    break;
-		   case 3:
-			    this.user = arg1.toString();
-			    break;
+		 
 		   default:
 		    break;
 		  }
+	}
+	public void LoadFrom(String string) {
+		// TODO Auto-generated method stub
+		if(string.indexOf(StringUtil.strFuHaoKaiShi) != 0)
+		{
+			this.address = "";
+			this.displayname = "";
+		}
+		else
+		{
+			string = string.substring(string.indexOf(StringUtil.strFuHaoKaiShi) + StringUtil.strFuHaoKaiShi.length(),string.length() - string.indexOf(StringUtil.strFuHaoKaiShi) - StringUtil.strFuHaoKaiShi.length());
+			String[] str = string.split(StringUtil.strFuHaoFenGe);
+			this.address = str[0];
+			this.displayname = str[1];
+		}
+	}
+	
+	public String ToString()
+	{
+		String str = StringUtil.strFuHaoKaiShi + this.address + StringUtil.strFuHaoFenGe + this.displayname;
+		return str;
 	}
 	
 }
