@@ -12,7 +12,7 @@ public class StringUtil {
 	public static String strFuHaoFenGe = "^^";
 	public static String strFuHaoYouJian = ";;";
 	
-	public static YouJianDiZhi[] toYouJianDiZhi(String strYjdz)
+	public static YouJianDiZhi[] StringToYouJianDiZhi(String strYjdz)
 	{
 		if (strYjdz.contains(strFuHaoYouJian) == false) return null;
 		String[] strYjdzs = strYjdz.split(strFuHaoYouJian);
@@ -22,6 +22,7 @@ public class StringUtil {
 			yjdzs[i] = new YouJianDiZhi();
 			yjdzs[i].LoadFrom(strYjdzs[i]);
 		}
+		return yjdzs;
 	}
 	
 	
@@ -138,5 +139,18 @@ public class StringUtil {
 
 
 };
+
+	public static String YouJianDiZhiToString(YouJianDiZhi[] to) {
+		// TODO Auto-generated method stub
+		String result= "";
+		if (to == null || to.length == 0) return result;
+		
+		for(int i=0;i<to.length ;i++)
+		{
+			result += StringUtil.strFuHaoKaiShi + to[i].getAddress() + StringUtil.strFuHaoFenGe + to[i].getDisplayname();
+			if (i< to.length -1 ) result += StringUtil.strFuHaoYouJian;
+		}
+		return result;
+	}
 
 }

@@ -1,7 +1,6 @@
 package com.xxjwd.sjbg;
 
 import com.xxjwd.classes.INT;
-import com.xxjwd.classes.TEST2;
 import com.xxjwd.classes.User;
 import com.xxjwd.classes.WenJianJia;
 import com.xxjwd.sjbg.R;
@@ -111,10 +110,8 @@ public class LoginActivity extends AnimFragmentActivity implements OnClickListen
 			Button btn = (Button)v;
 			String name = edtNum.getText().toString();
 			String password = edtPass.getText().toString();
-			TEST2 t2;
-			t2 = Transfer.getTest2(1111, "bbbb");
 			//edtNum.setText(t2.getTest11()..getValue()+"next");
-			switch (btn.getId()+4333243)
+			switch (btn.getId())
 			{
 			case  R.id.login_btn_login:
 

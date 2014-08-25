@@ -21,8 +21,6 @@ import com.xxjwd.classes.Instruction;
 import com.xxjwd.classes.JianBao;
 import com.xxjwd.classes.Product;
 import com.xxjwd.classes.RegisterInfo;
-import com.xxjwd.classes.TEST1;
-import com.xxjwd.classes.TEST2;
 import com.xxjwd.classes.TeQing;
 import com.xxjwd.classes.User;
 import com.xxjwd.classes.UserGw;

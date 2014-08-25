@@ -6,6 +6,8 @@ import java.util.Hashtable;
 import org.ksoap2.serialization.KvmSerializable;
 import org.ksoap2.serialization.PropertyInfo;
 
+import com.zcj.util.StringUtil;
+
 public class YouJian implements KvmSerializable,Serializable {
 	/**
 	 * 
@@ -72,40 +74,48 @@ public class YouJian implements KvmSerializable,Serializable {
 		this.isBodyHtml = isBodyHtml;
 	}
 	public YouJianDiZhi[] getTo() {
-		return to;
+		return StringUtil.StringToYouJianDiZhi(to);
 	}
 	public void setTo(YouJianDiZhi[] to) {
-		this.to = to;
+		this.to = StringUtil.YouJianDiZhiToString( to);
 	}
 	public YouJianDiZhi[] getCc() {
-		return cc;
+		return StringUtil.StringToYouJianDiZhi(cc);
 	}
 	public void setCc(YouJianDiZhi[] cc) {
-		this.cc = cc;
+		this.cc = StringUtil.YouJianDiZhiToString( cc);
 	}
 	public YouJianDiZhi[] getBcc() {
-		return bcc;
+		return StringUtil.StringToYouJianDiZhi(bcc);
 	}
 	public void setBcc(YouJianDiZhi[] bcc) {
-		this.bcc = bcc;
+		this.bcc = StringUtil.YouJianDiZhiToString( bcc);
 	}
 	public YouJianDiZhi[] getReplyTo() {
-		return replyTo;
+		return StringUtil.StringToYouJianDiZhi(replyTo);
 	}
 	public void setReplyTo(YouJianDiZhi[] replyTo) {
-		this.replyTo = replyTo;
+		this.replyTo = StringUtil.YouJianDiZhiToString( replyTo);
 	}
 	public YouJianDiZhi getFrom() {
-		return from;
+		YouJianDiZhi[] result = StringUtil.StringToYouJianDiZhi(from);
+		if (result == null || result.length == 0) return null;
+		return result[0];
 	}
 	public void setFrom(YouJianDiZhi from) {
-		this.from = from;
+		YouJianDiZhi[] yjdz = new YouJianDiZhi[1];
+		yjdz[0] = from;
+		this.from = StringUtil.YouJianDiZhiToString( yjdz);
 	}
 	public YouJianDiZhi getSender() {
-		return sender;
+		YouJianDiZhi[] result = StringUtil.StringToYouJianDiZhi(sender);
+		if (result == null || result.length == 0) return null;
+		return result[0];
 	}
 	public void setSender(YouJianDiZhi sender) {
-		this.sender = sender;
+		YouJianDiZhi[] yjdz = new YouJianDiZhi[1];
+		yjdz[0] = sender;
+		this.sender = StringUtil.YouJianDiZhiToString( yjdz);
 	}
 	public int getImportance() {
 		return importance;
