@@ -27,7 +27,7 @@ public class YouJian implements KvmSerializable,Serializable {
 	private String from;
 	private String sender;
 	private int importance;
-	
+	private String attachment;
 	
 	
 	
@@ -131,36 +131,74 @@ public class YouJian implements KvmSerializable,Serializable {
 	@Override
 	public int getPropertyCount() {
 		// TODO Auto-generated method stub
-		return 14;
+		return 15;
 	}
 	@Override
 	public void getPropertyInfo(int arg0, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo arg2) {
 		// TODO Auto-generated method stub
 		switch(arg0){
 		  case 0:
-		   arg2.type = PropertyInfo.STRING_CLASS;
-		   arg2.name = "Name";
+		   arg2.type = PropertyInfo.INTEGER_CLASS;
+		   arg2.name = "Size";
 		   break;
 		  case 1:
-		   arg2.type = PropertyInfo.INTEGER_CLASS;
-		   arg2.name = "NumNewMsg";
+		   arg2.type = PropertyInfo.STRING_CLASS;
+		   arg2.name = "Subject";
 		   break;
 		  case 2:
-			   arg2.type = PropertyInfo.INTEGER_CLASS;
-			   arg2.name = "NumMsg";
+			   arg2.type = PropertyInfo.STRING_CLASS;
+			   arg2.name = "Body";
 			   break;
 		  case 3:
-			   arg2.type = PropertyInfo.INTEGER_CLASS;
-			   arg2.name = "NumUnSeen";
+			   arg2.type = PropertyInfo.STRING_CLASS;
+			   arg2.name = "Date";
 			   break;
 		  case 4:
-			   arg2.type = PropertyInfo.INTEGER_CLASS;
-			   arg2.name = "UIDValidity";
+			   arg2.type = PropertyInfo.BOOLEAN_CLASS;
+			   arg2.name = "IsBodyHtml";
 			   break;
 		  case 5:
-			   arg2.type = PropertyInfo.INTEGER_CLASS;
-			   arg2.name = "UIDNext";
+			   arg2.type = PropertyInfo.STRING_CLASS;
+			   arg2.name = "To";
 			   break;
+		  case 6:
+			   arg2.type = PropertyInfo.STRING_CLASS;
+			   arg2.name = "Cc";
+			   break;
+		  case 7:
+		   arg2.type = PropertyInfo.STRING_CLASS;
+		   arg2.name = "Bcc";
+		   break;
+		  case 8:
+			   arg2.type = PropertyInfo.STRING_CLASS;
+			   arg2.name = "ReplyTo";
+			   break;
+		  case 9:
+			   arg2.type = PropertyInfo.STRING_CLASS;
+			   arg2.name = "Attachments";
+			   break;
+		  case 10:
+			   arg2.type = PropertyInfo.STRING_CLASS;
+			   arg2.name = "From";
+			   break;
+		  case 11:
+			   arg2.type = PropertyInfo.STRING_CLASS;
+			   arg2.name = "Sender";
+			   break;
+		  case 12:
+			   arg2.type = PropertyInfo.STRING_CLASS;
+			   arg2.name = "MessageID";
+			   break;
+			  case 13:
+			   arg2.type = PropertyInfo.STRING_CLASS;
+			   arg2.name = "Uid";
+			   break;
+		  case 14:
+			   arg2.type = PropertyInfo.INTEGER_CLASS;
+			   arg2.name = "Importance";
+			   break;
+		 
+			
 		  default:
 		   break;
 		}
@@ -171,12 +209,50 @@ public class YouJian implements KvmSerializable,Serializable {
 		if(arg1 == null) return;
 		  switch(arg0){
 		   case 0:
-		    this.body = arg1.toString();
+		    this.size = Integer.valueOf(arg1.toString());
 		    break;
 		   case 1:
-		    this.importance = Integer.valueOf(arg1.toString());
+		    this.subject = arg1.toString();
 		    break;
-		  
+		   case 2:
+			    this.body = arg1.toString();
+			    break;
+		   case 3:
+			    this.date = arg1.toString();
+			    break;
+		   case 4:
+			    this.isBodyHtml = Boolean.parseBoolean( arg1.toString());
+			    break;
+		   case 5:
+			    this.to = arg1.toString();
+			    break;
+		   case 6:
+			    this.cc = arg1.toString();
+			    break;
+		   case 7:
+			    this.bcc = arg1.toString();
+			    break;
+		   case 8:
+			    this.replyTo = arg1.toString();
+			    break;
+		   case 9:
+			    this.attachment = arg1.toString();
+			    break;
+		   case 10:
+			    this.from = arg1.toString();
+			    break;
+		   case 11:
+			    this.sender = arg1.toString();
+			    break;
+		   case 12:
+			    this.messageID = arg1.toString();
+			    break;
+		   case 13:
+			    this.uID = arg1.toString();
+			    break;
+		   case 14:
+			    this.importance = Integer.parseInt(arg1.toString());
+			    break;
 		   default:
 		    break;
 		  }

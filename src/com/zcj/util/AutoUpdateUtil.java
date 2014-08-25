@@ -47,6 +47,7 @@ public class AutoUpdateUtil {
 	public void doCheckUpdate()
 	{
 		new checkUpdateTask().execute(getVerCode(mContext));
+		//showNextActivity();
 	}
 	
 	public static AutoUpdateUtil newInstance(Context context)

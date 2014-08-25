@@ -20,12 +20,12 @@ import com.xxjwd.classes.INT;
 import com.xxjwd.classes.Instruction;
 import com.xxjwd.classes.JianBao;
 import com.xxjwd.classes.Product;
-import com.xxjwd.classes.RegisterInfo;
 import com.xxjwd.classes.TeQing;
 import com.xxjwd.classes.User;
 import com.xxjwd.classes.UserGw;
 import com.xxjwd.classes.WenJianJia;
 import com.xxjwd.classes.XinWen;
+import com.xxjwd.classes.YouJian;
 import com.xxjwd.classes.ZbPerson;
 import com.zcj.lib.FakeX509TrustManager;
 
@@ -81,11 +81,6 @@ public class Transfer {
         else
         {
         	envelope.addMapping(nameSpace, rClass.getClass().getSimpleName() ,rClass.getClass());
-        	/*if (methodName.equals("forTest"))
-        	{
-        		TEST1 t= new TEST1();
-        		envelope.addMapping(nameSpace, t.getClass().getSimpleName() ,t.getClass());
-        	}*/
         }
         StringWriter   sw=new   StringWriter();  
         PrintWriter pw = new PrintWriter(sw);
@@ -564,7 +559,15 @@ public class Transfer {
 		return (WenJianJia)getWebService("邮件服务" ,"selectMailBox",para,new WenJianJia());
 	}
 	
-
+	public static YouJian getMailMessage(int uid,int muid,String mailboxName)
+	{
+		
+		Parameter[] para = new Parameter[3];
+		para[0] = new Parameter("uid",uid);
+		para[1] = new Parameter("muid",muid);
+		para[2] = new Parameter("mailBoxName",mailboxName);
+		return (YouJian)getWebService("邮件服务" ,"getMailMessage",para,new YouJian());
+	}
 
 	public static int isIn() {
 		// TODO Auto-generated method stub
