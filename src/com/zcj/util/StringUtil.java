@@ -9,12 +9,12 @@ public class StringUtil {
 	/** 判断是否是 "" 或者 null */
 	
 	public static String strFuHaoKaiShi = "$$";
-	public static String strFuHaoFenGe = "^^";
+	public static String strFuHaoFenGe = "''";
 	public static String strFuHaoYouJian = ";;";
 	
 	public static YouJianDiZhi[] StringToYouJianDiZhi(String strYjdz)
 	{
-		if (strYjdz.contains(strFuHaoYouJian) == false) return null;
+		if (strYjdz.contains(strFuHaoKaiShi) == false) return null;
 		String[] strYjdzs = strYjdz.split(strFuHaoYouJian);
 		YouJianDiZhi[] yjdzs = new YouJianDiZhi[strYjdzs.length];
 		for(int i=0;i<yjdzs.length ;i++)

@@ -83,7 +83,7 @@ public class YouJianDiZhi implements KvmSerializable,Serializable {
 		}
 		else
 		{
-			string = string.substring(string.indexOf(StringUtil.strFuHaoKaiShi) + StringUtil.strFuHaoKaiShi.length(),string.length() - string.indexOf(StringUtil.strFuHaoKaiShi) - StringUtil.strFuHaoKaiShi.length());
+			string = string.substring(string.indexOf(StringUtil.strFuHaoKaiShi) + StringUtil.strFuHaoKaiShi.length(),string.length());
 			String[] str = string.split(StringUtil.strFuHaoFenGe);
 			this.address = str[0];
 			this.displayname = str[1];
