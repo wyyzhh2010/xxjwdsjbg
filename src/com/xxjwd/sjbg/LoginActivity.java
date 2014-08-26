@@ -110,9 +110,8 @@ public class LoginActivity extends AnimFragmentActivity implements OnClickListen
 			Button btn = (Button)v;
 			String name = edtNum.getText().toString();
 			String password = edtPass.getText().toString();
-			YouJian yj = Transfer.getMailMessage(3975, 22, "inbox");
-			edtNum.setText(yj.getReplyTo()[1].getAddress());
-			switch (btn.getId()+343566)
+			
+			switch (btn.getId())
 			{
 			case  R.id.login_btn_login:
 
