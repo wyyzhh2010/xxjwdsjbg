@@ -26,6 +26,7 @@ import com.xxjwd.classes.UserGw;
 import com.xxjwd.classes.WenJianJia;
 import com.xxjwd.classes.XinWen;
 import com.xxjwd.classes.YouJian;
+import com.xxjwd.classes.YouJianSimple;
 import com.xxjwd.classes.ZbPerson;
 import com.zcj.lib.FakeX509TrustManager;
 
@@ -575,6 +576,27 @@ public class Transfer {
 		}
 		
 		return wjjs;
+        
+	}
+	
+	public static YouJianSimple[] getMailMessageList(int uid,int muids,int muide,String mailboxName)
+	{
+
+		Parameter[] para = new Parameter[4];
+		para[0] = new Parameter("uid",uid);
+		para[1] = new Parameter("muids",muids);
+		para[2] = new Parameter("muide",muide);
+		para[3] = new Parameter("mailBoxName",mailboxName);
+		Vector<?> v =(Vector<?>) getWebService("ÓÊ¼þ·þÎñ" ,"getMailMessageList",para,new YouJianSimple());
+		if (v == null) return null;
+		YouJianSimple[] yjs =  new YouJianSimple[v.size()];
+		
+		for(int i=0;i<v.size();i++)
+		{
+			yjs[i] = (YouJianSimple) v.elementAt(i);
+		}
+		
+		return yjs;
         
 	}
 	

@@ -2,7 +2,6 @@ package com.xxjwd.sjbg;
 
 import com.xxjwd.classes.INT;
 import com.xxjwd.classes.User;
-import com.xxjwd.classes.YouJian;
 import com.xxjwd.sjbg.R;
 import com.xxjwd.transfer.Transfer;
 import com.zcj.lib.AnimFragmentActivity;
