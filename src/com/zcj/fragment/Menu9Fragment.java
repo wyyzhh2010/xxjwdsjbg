@@ -25,6 +25,7 @@ import com.xxjwd.sjbg.TeQingListActivity;
 import com.xxjwd.sjbg.TuPianXinWenActivity;
 import com.xxjwd.sjbg.XinWenActivity;
 import com.xxjwd.sjbg.GongWenListActivity;
+import com.xxjwd.sjbg.YouJianListActivity;
 import com.xxjwd.sjbg.ZhiBanActivity;
 import com.xxjwd.sjbg.R;
 import com.zcj.lib.AnimFragment;
@@ -97,7 +98,7 @@ public class Menu9Fragment extends AnimFragment {
 		         		itemName = new String[]{"最后访问"};
 		         		break;
 		         	case 1://移动办公
-		         		imageRes = new int[] {R.drawable.p201,R.drawable.p193,R.drawable.p201,R.drawable.p193,R.drawable.p193,R.drawable.p193,R.drawable.p201,R.drawable.p201};
+		         		imageRes = new int[] {R.drawable.p201,R.drawable.p193,R.drawable.p201,R.drawable.p201,R.drawable.p193,R.drawable.p193,R.drawable.p201,R.drawable.p201};
 		         		itemName = new String[]{"公文处理","工作写实","生产简报","电子邮件","电话号码","呼叫中心","值班查询","特情预警"};
 		         		break;
 		         	case 2://机车运用
@@ -174,6 +175,13 @@ public void onItemClick(AdapterView<?> arg0, View view, int position,long arg3) 
     		   Intent intent = new Intent();
 
     	       intent.setClass(view.getContext(), ShengChanActivity.class);
+    	       startActivity(intent);
+    	   }
+    	   else if (position == 3)
+    	   {
+    		   Intent intent = new Intent();
+
+    	       intent.setClass(view.getContext(), YouJianListActivity.class);
     	       startActivity(intent);
     	   }
     	   else if (position == 6)

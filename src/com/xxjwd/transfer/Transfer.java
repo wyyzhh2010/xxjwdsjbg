@@ -559,6 +559,25 @@ public class Transfer {
 		return (WenJianJia)getWebService("邮件服务" ,"selectMailBox",para,new WenJianJia());
 	}
 	
+	public static WenJianJia[] getMailBoxList(int uid)
+	{
+
+		Parameter[] para = new Parameter[1];
+		para[0] = new Parameter("uid",uid);
+		
+		Vector<?> v =(Vector<?>) getWebService("邮件服务" ,"listMailBoxes",para,new WenJianJia());
+		if (v == null) return null;
+		WenJianJia[] wjjs =  new WenJianJia[v.size()];
+		
+		for(int i=0;i<v.size();i++)
+		{
+			wjjs[i] = (WenJianJia) v.elementAt(i);
+		}
+		
+		return wjjs;
+        
+	}
+	
 	public static YouJian getMailMessage(int uid,int muid,String mailboxName)
 	{
 		
