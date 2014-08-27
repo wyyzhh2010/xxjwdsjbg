@@ -30,6 +30,12 @@ public class YouJian implements KvmSerializable,Serializable {
 	private String attachment;
 	
 	
+	public YouJianFuJian[] getAttachments()
+	{
+		YouJianFuJian[] atts = StringUtil.StringToYouJianFuJian(attachment);
+		return atts;
+	}
+	
 	
 	public int getSize() {
 		return size;

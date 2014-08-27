@@ -3,6 +3,7 @@ package com.zcj.util;
 import java.util.Random;
 
 import com.xxjwd.classes.YouJianDiZhi;
+import com.xxjwd.classes.YouJianFuJian;
 
 public class StringUtil {
 	
@@ -11,6 +12,19 @@ public class StringUtil {
 	public static String strFuHaoKaiShi = "$$";
 	public static String strFuHaoFenGe = "''";
 	public static String strFuHaoYouJian = ";;";
+	
+	public static YouJianFuJian[] StringToYouJianFuJian(String strYjfj)
+	{
+		if (strYjfj.contains(strFuHaoKaiShi) == false) return null;
+		String[] strYjfjs = strYjfj.split(strFuHaoYouJian);
+		YouJianFuJian[] yjfjs = new YouJianFuJian[strYjfjs.length];
+		for(int i=0;i<yjfjs.length;i++)
+		{
+			yjfjs[i] = new YouJianFuJian();
+			yjfjs[i].LoadFrom(strYjfjs[i]);
+		}
+		return yjfjs;
+	}
 	
 	public static YouJianDiZhi[] StringToYouJianDiZhi(String strYjdz)
 	{

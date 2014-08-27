@@ -52,7 +52,7 @@ public class YouJianListActivity extends AnimFragmentActivity implements OnScrol
 	View actionbarLayout;
 	MyApp app;
 	String filter="";
-	final int COUNT_OF_FEACH=20;
+	final int COUNT_OF_FEACH=10;
 	@Override  
 	public void onCreate(Bundle savedInstanceState) {  
 		super.onCreate(savedInstanceState);  
@@ -84,11 +84,11 @@ public class YouJianListActivity extends AnimFragmentActivity implements OnScrol
 				// TODO Auto-generated method stub
 				
     			ListView listView = (ListView)parent;
-    			GongWen item_gw = (GongWen) listView.getItemAtPosition(position);
-    			if (item_gw.getNumber().equals("00-00-00")) return;
+    			YouJianSimple yj = (YouJianSimple) listView.getItemAtPosition(position);
+    			if (yj.getSize() <= 0 ) return;
     	     	Intent intent=new Intent();
-    	    	intent.putExtra("wh", item_gw.getNumber());
-                intent.setClass(YouJianListActivity.this, GongWenDetailActivity.class);
+    	    	intent.putExtra("muid", yj.getuID());
+                intent.setClass(YouJianListActivity.this, YouJianDetailActivity.class);
                 startActivity(intent);
                
        			
@@ -196,7 +196,7 @@ public class YouJianListActivity extends AnimFragmentActivity implements OnScrol
 	     inflater.inflate(R.menu.gw_list_menu, menu);
 	     MenuItem searchItem = menu.findItem(R.id.gw_list_search);
 			SearchView sv = (SearchView) searchItem.getActionView();
-			sv.setQueryHint("可按文号或标题查询");
+			sv.setQueryHint("可按发件人或标题查询");
 			sv.setIconifiedByDefault(true);
 			sv.setSubmitButtonEnabled(true);
 			sv.setOnQueryTextListener(oQueryTextListener);
@@ -235,7 +235,7 @@ public class YouJianListActivity extends AnimFragmentActivity implements OnScrol
     		uid = 3975;
         	if (isUp) ksxh = 1;
         	else ksxh = adapter.getCount() + 1;
-        	YouJianSimple[] yjs = Transfer.getMailMessageList(uid,ksxh,ksxh+COUNT_OF_FEACH, mailboxName);
+        	YouJianSimple[] yjs = Transfer.getMailMessageList(uid,ksxh,ksxh+COUNT_OF_FEACH-1, mailboxName);
         	filter = "";
         	List<YouJianSimple> yjList = new ArrayList<YouJianSimple>() ;
         	if (yjs == null)

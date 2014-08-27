@@ -6,6 +6,8 @@ import java.util.Hashtable;
 import org.ksoap2.serialization.KvmSerializable;
 import org.ksoap2.serialization.PropertyInfo;
 
+import com.zcj.util.StringUtil;
+
 public class YouJianFuJian implements KvmSerializable,Serializable {
 	/**
 	 * 
@@ -79,6 +81,26 @@ public class YouJianFuJian implements KvmSerializable,Serializable {
 		   default:
 		    break;
 		  }
+	}
+	public void LoadFrom(String string) {
+		// TODO Auto-generated method stub
+		if(string.indexOf(StringUtil.strFuHaoKaiShi) != 0)
+		{
+			this.filesize = -1;
+			this.filename = "";
+			this.base64code = "";
+		}
+		else
+		{
+			string = string.substring(string.indexOf(StringUtil.strFuHaoKaiShi) + StringUtil.strFuHaoKaiShi.length(),string.length());
+			String[] str = string.split(StringUtil.strFuHaoFenGe);
+			this.filesize = Integer.parseInt(str[0]);
+			this.filename = str[1];
+			if (str.length >= 3)
+			{
+				this.base64code = str[2];
+			}
+		}
 	}
 	
 }
