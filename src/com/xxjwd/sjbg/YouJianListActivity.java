@@ -88,6 +88,7 @@ public class YouJianListActivity extends AnimFragmentActivity implements OnScrol
     			if (yj.getSize() <= 0 ) return;
     	     	Intent intent=new Intent();
     	    	intent.putExtra("muid", yj.getuID());
+    	    	intent.putExtra("mailboxName",mActionbarSpinner.getSelectedItem().toString());
                 intent.setClass(YouJianListActivity.this, YouJianDetailActivity.class);
                 startActivity(intent);
                

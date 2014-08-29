@@ -51,7 +51,8 @@ public class YouJianDetailActivity extends AnimFragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.youjian_details);
 		Intent intent = getIntent();
-		String wh = intent.getStringExtra("muid");
+		String muid = intent.getStringExtra("muid");
+		String mailboxName = intent.getStringExtra("mailboxName");
 		// Ëø¶¨ÊúÆÁ
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		// ±êÌâÀ¸Òþ²Ø
@@ -60,7 +61,7 @@ public class YouJianDetailActivity extends AnimFragmentActivity {
 		actionBar.setDisplayHomeAsUpEnabled(true);
 
 		app = (MyApp) getApplication();
-		doGetData(wh);
+		doGetData(muid,mailboxName);
 
 	}
 
@@ -69,12 +70,13 @@ public class YouJianDetailActivity extends AnimFragmentActivity {
 		super.onResume();
 		Intent intent = getIntent();
 		String uid = intent.getStringExtra("muid");
-		doGetData(uid);
+		String mailboxName = intent.getStringExtra("mailboxName");
+		doGetData(uid,mailboxName);
 	}
 
-	void doGetData(String uid) {
+	void doGetData(String uid,String mailboxName) {
 		ActivityUtil.getInstance().noticeSaying(this);
-		new GetDataTask().execute(uid);
+		new GetDataTask().execute(uid,mailboxName);
 	}
 
 	void doGetFile(String fjPath) {
@@ -105,7 +107,7 @@ public class YouJianDetailActivity extends AnimFragmentActivity {
 		ArrayList<HashMap<String, Object>> listItems = new ArrayList<HashMap<String, Object>>();
 		
 		YouJianFuJian[] atts = yj.getAttachments();
-		if (atts.length > 0) {
+		if (atts != null && atts.length > 0) {
 			for (int i = 0; i < atts.length; i++) {
 				HashMap<String, Object> map = new HashMap<String, Object>();
 				map.put("ItemTitle", atts[i].getFilename()); // ÎÄ×Ö
@@ -205,8 +207,10 @@ public class YouJianDetailActivity extends AnimFragmentActivity {
 		@Override
 		protected Void doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			String wh = params[0];
-			yj = Transfer.getMailMessage(3975, 1, "imp");
+			String muid = params[0];
+			int iuid = Integer.parseInt(muid);
+			String mailboxName = params[1];
+			yj = Transfer.getMailMessage(3975, iuid, mailboxName);
 			return null;
 		}
 
