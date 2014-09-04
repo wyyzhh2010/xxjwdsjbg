@@ -8,6 +8,7 @@ import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.webkit.WebView;
 import android.widget.Toast;
 import android.app.ActionBar;
 import android.app.AlertDialog;
@@ -40,6 +41,7 @@ import com.zcj.lib.MyApp;
 import com.zcj.lib.MyListView;
 import com.zcj.util.ActivityUtil;
 import com.zcj.util.IntentUtil;
+import com.zcj.util.StringUtil;
 
 public class YouJianDetailActivity extends AnimFragmentActivity {
 	private YouJian yj;
@@ -49,7 +51,7 @@ public class YouJianDetailActivity extends AnimFragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.youjian_details);
+		setContentView(R.layout.youjian_detail);
 		Intent intent = getIntent();
 		String muid = intent.getStringExtra("muid");
 		String mailboxName = intent.getStringExtra("mailboxName");
@@ -89,29 +91,35 @@ public class YouJianDetailActivity extends AnimFragmentActivity {
 
 		this.yj = yj;
 
-		TextView txtSubject = (TextView) findViewById(R.id.txt_yj_detail_Subject);
-		txtSubject.setText(yj.getSubject());
-		TextView txtFrom = (TextView) findViewById(R.id.txt_yj_detail_From);
-		txtFrom.setText(yj.getFrom().getAddress());
-		TextView txtBody = (TextView) findViewById(R.id.txt_yj_detail_Body);
-		txtBody.setText(yj.getBody());
-		TextView txtTo = (TextView) findViewById(R.id.txt_yj_detail_To);
-		txtTo.setText(yj.getTo()[0].getAddress());
-		TextView txtReplyTo = (TextView) findViewById(R.id.txt_yj_detail_ReplyTo);
+		TextView txtSubject = (TextView) findViewById(R.id.txt_youjian_detail_subject);
+		txtSubject.setText("主    题：" + yj.getSubject());
+		TextView txtFrom = (TextView) findViewById(R.id.txt_youjian_detail_from);
+		txtFrom.setText("发件人：" + yj.getFrom().ShowFullString());
+		TextView txtTo = (TextView) findViewById(R.id.txt_youjian_detail_to);
+		txtTo.setText("收件人：" +  StringUtil.ShowFullString(yj.getTo()));
+		TextView txtReplyTo = (TextView) findViewById(R.id.txt_youjian_detail_replyto);
 		//txtReplyTo.setText(yj.getReplyTo()[0].getAddress());
-		TextView txtCc = (TextView) findViewById(R.id.txt_yj_detail_Cc);
-		//txtCc.setText(yj.getCc()[0].getAddress());
-		TextView txtDate = (TextView) findViewById(R.id.txt_yj_detail_Date);
-		txtDate.setText(yj.getDate());
-		MyListView lvAttachFiles = (MyListView) findViewById(R.id.lv_yj_detail_AttachFiles);
+		txtReplyTo.setVisibility(View.GONE);
+		TextView txtCc = (TextView) findViewById(R.id.txt_youjian_detail_cc);
+		txtCc.setText("抄    送：" + StringUtil.ShowFullString( yj.getCc()));
+		
+		if (StringUtil.ShowFullString( yj.getCc()).equals("")) txtCc.setVisibility(View.GONE);
+		TextView txtDate = (TextView) findViewById(R.id.txt_youjian_detail_date);
+		txtDate.setText("时    间：" + yj.getDate());
+		WebView wvBody = (WebView)findViewById(R.id.wv_mailcontent);
+		wvBody.setVisibility(View.VISIBLE);
+		wvBody.loadDataWithBaseURL(null, yj.getBody(), "text/html", "utf-8", null);
+		MyListView lvAttachFiles = (MyListView) findViewById(R.id.lv_youjian_detail_AttachFiles);
+		lvAttachFiles.setVisibility(View.GONE);
 		ArrayList<HashMap<String, Object>> listItems = new ArrayList<HashMap<String, Object>>();
 		
 		YouJianFuJian[] atts = yj.getAttachments();
 		if (atts != null && atts.length > 0) {
+			lvAttachFiles.setVisibility(View.VISIBLE);
 			for (int i = 0; i < atts.length; i++) {
 				HashMap<String, Object> map = new HashMap<String, Object>();
 				map.put("ItemTitle", atts[i].getFilename()); // 文字
-				map.put("ItemImage", R.drawable.gmail);// 图片
+				map.put("ItemImage", R.drawable.ic_email_attachment_small);// 图片
 				listItems.add(map);
 			}
 			SimpleAdapter sad = new SimpleAdapter(this, listItems,

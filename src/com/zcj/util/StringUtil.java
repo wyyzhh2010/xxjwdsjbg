@@ -39,6 +39,19 @@ public class StringUtil {
 		return yjdzs;
 	}
 	
+	public static String ShowFullString(YouJianDiZhi[] yjdzs)
+	{
+		if (yjdzs == null ) return "";
+		if (yjdzs.length == 0) return "";
+		if (yjdzs.length == 1) return yjdzs[0].ShowFullString();
+		String str = "";
+		for(int i=0 ;i < yjdzs.length ;i ++)
+		{
+			str += yjdzs[i].ShowFullString();
+			if (i < yjdzs.length -1) str += ";";
+		}
+		return str;
+	}
 	
 	public static boolean isEmpty(String str) {
 		if (str != null && !"".equals(str)) {

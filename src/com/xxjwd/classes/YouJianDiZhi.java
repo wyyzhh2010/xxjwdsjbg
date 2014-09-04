@@ -98,6 +98,20 @@ public class YouJianDiZhi implements KvmSerializable,Serializable {
 		}
 	}
 	
+	public String ShowFullString()
+	{
+		String str;
+		if(this.displayname == null || this.displayname == "")
+		{
+			str = this.address;
+		}
+		else
+		{
+			str = this.displayname + "(" + this.address + ")";
+		}
+		return str;
+	}
+	
 	public String ToString()
 	{
 		String str = StringUtil.strFuHaoKaiShi + this.address + StringUtil.strFuHaoFenGe + this.displayname;

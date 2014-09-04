@@ -193,7 +193,7 @@ public class YouJianListActivity extends AnimFragmentActivity implements OnScrol
 	 @Override
 	 public boolean onCreateOptionsMenu(Menu menu) {
 	     // Inflate the menu items for use in the action bar
-	     MenuInflater inflater = getMenuInflater();
+	    /* MenuInflater inflater = getMenuInflater();
 	     inflater.inflate(R.menu.gw_list_menu, menu);
 	     MenuItem searchItem = menu.findItem(R.id.gw_list_search);
 			SearchView sv = (SearchView) searchItem.getActionView();
@@ -201,6 +201,7 @@ public class YouJianListActivity extends AnimFragmentActivity implements OnScrol
 			sv.setIconifiedByDefault(true);
 			sv.setSubmitButtonEnabled(true);
 			sv.setOnQueryTextListener(oQueryTextListener);
+			*/
 			
 	     return super.onCreateOptionsMenu(menu);
 	 }
