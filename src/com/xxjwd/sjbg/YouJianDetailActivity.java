@@ -81,9 +81,9 @@ public class YouJianDetailActivity extends AnimFragmentActivity {
 		new GetDataTask().execute(uid,mailboxName);
 	}
 
-	void doGetFile(String fjPath) {
+	void doGetFile(String uid,String mailboxName , int pos) {
 		ActivityUtil.getInstance().noticeSaying(this);
-		new getFileTask().execute(fjPath);
+		new getFileTask().execute(uid,mailboxName, String.valueOf(pos) );
 	}
 
 	public void showDetails(YouJian yj) {
@@ -118,16 +118,17 @@ public class YouJianDetailActivity extends AnimFragmentActivity {
 			lvAttachFiles.setVisibility(View.VISIBLE);
 			for (int i = 0; i < atts.length; i++) {
 				HashMap<String, Object> map = new HashMap<String, Object>();
-				map.put("ItemTitle", atts[i].getFilename()); // 文字
-				map.put("ItemImage", R.drawable.ic_email_attachment_small);// 图片
+				map.put("txt_youjian_attach_title", atts[i].getFilename()); // 文字
+				map.put("img_youjian_attach_image", R.drawable.ic_email_attachment_small);// 图片
+				map.put("txt_youjian_attach_size", atts[i].ShowFullSize()); // 附件大小
 				listItems.add(map);
 			}
 			SimpleAdapter sad = new SimpleAdapter(this, listItems,
-					R.layout.gw_details_attach, new String[] { "ItemTitle",
-							"ItemImage" },
+					R.layout.youjian_details_attach, new String[] { "img_youjian_attach_image",
+							"txt_youjian_attach_title" , "txt_youjian_attach_size" },
 
 					// ListItem的XML文件里面的两个TextView ID
-					new int[] { R.id.ItemTitle, R.id.ItemImage });
+					new int[] { R.id.img_youjian_attach_image, R.id.txt_youjian_attach_title,R.id.txt_youjian_attach_size });
 			lvAttachFiles.setAdapter(sad);
 			lvAttachFiles
 					.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -135,8 +136,10 @@ public class YouJianDetailActivity extends AnimFragmentActivity {
 						public void onItemClick(AdapterView<?> arg0, View arg1,
 								int position, long arg3) {
 
-							doGetFile(getIntent().getStringExtra(
-									"a" + (position + 1)));
+							Intent intent = getIntent();
+							String muid = intent.getStringExtra("muid");
+							String mailboxName = intent.getStringExtra("mailboxName");
+							doGetFile(muid,mailboxName,position+1);
 
 						}
 
@@ -171,24 +174,31 @@ public class YouJianDetailActivity extends AnimFragmentActivity {
 		return super.onCreateOptionsMenu(menu);
 	}
 
-	private class getFileTask extends AsyncTask<String, Void, String> {
+	private class getFileTask extends AsyncTask<String, Void, Void> {
+		
+		YouJianFuJian[] yjfjs;
 		@Override
-		protected String doInBackground(String... params) {
+		protected Void doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			String fjPath = params[0];
-
-			return Transfer.getRemoteFile(fjPath);
+			String muid = params[0];
+			int iuid = Integer.parseInt(muid);
+			String mailboxName = params[1];
+			String poss = params[2];
+			int pos = Integer.parseInt(poss);
+			yjfjs = Transfer.getMailAttachment(3975, iuid, mailboxName, pos);
+			return null;
 		}
 
 		@Override
-		protected void onPostExecute(String file) {
+		protected void onPostExecute(Void file) {
 			String SdPath = Environment.getExternalStorageDirectory()
 					.toString();
-			String base64Code = file;
+			String base64Code = yjfjs[0].getBase64code();
+			String fjExt = yjfjs[0].getFileNameExt();
 			byte[] buffer = Base64.decode(base64Code);
 			FileOutputStream outStream;
 			try {
-				outStream = new FileOutputStream(SdPath + "/a.doc");
+				outStream = new FileOutputStream(SdPath + "/" + yjfjs[0].getFilename());
 				outStream.flush();
 				outStream.write(buffer);
 				outStream.close();
@@ -200,7 +210,8 @@ public class YouJianDetailActivity extends AnimFragmentActivity {
 				e.printStackTrace();
 			}
 			ActivityUtil.getInstance().dismiss();
-			Intent i = IntentUtil.getFileIntent(SdPath + "/a.doc", "doc");
+			Toast.makeText(YouJianDetailActivity.this, "文件已保存到 " + SdPath, Toast.LENGTH_LONG).show();
+			Intent i = IntentUtil.getFileIntent(SdPath + "/" + yjfjs[0].getFilename(), fjExt);
 			startActivity(i);
 
 		}

@@ -26,6 +26,7 @@ import com.xxjwd.classes.UserGw;
 import com.xxjwd.classes.WenJianJia;
 import com.xxjwd.classes.XinWen;
 import com.xxjwd.classes.YouJian;
+import com.xxjwd.classes.YouJianFuJian;
 import com.xxjwd.classes.YouJianSimple;
 import com.xxjwd.classes.ZbPerson;
 import com.zcj.lib.FakeX509TrustManager;
@@ -608,6 +609,26 @@ public class Transfer {
 		para[1] = new Parameter("muid",muid);
 		para[2] = new Parameter("mailBoxName",mailboxName);
 		return (YouJian)getWebService("邮件服务" ,"getMailMessage",para,new YouJian());
+	}
+	
+	public static YouJianFuJian[] getMailAttachment(int uid,int muid,String mailboxName , int pos)
+	{
+		
+		Parameter[] para = new Parameter[4];
+		para[0] = new Parameter("uid",uid);
+		para[1] = new Parameter("muid",muid);
+		para[2] = new Parameter("mailBoxName",mailboxName);
+		para[3] = new Parameter("pos",pos);
+		Vector<?> v =(Vector<?>)getWebService("邮件服务" ,"getAttachment",para,new YouJianFuJian());
+		if (v == null) return null;
+		YouJianFuJian[] yjfjs =  new YouJianFuJian[v.size()];
+		
+		for(int i=0;i<v.size();i++)
+		{
+			yjfjs[i] = (YouJianFuJian) v.elementAt(i);
+		}
+		
+		return yjfjs;
 	}
 
 	public static int isIn() {

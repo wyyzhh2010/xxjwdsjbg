@@ -9,7 +9,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="left"
-        android:text="邮件主题："
+        android:text="主题："
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold" />
