@@ -29,9 +29,9 @@
     <string name="title_activity_gong_wen_qs">公文签收</string>
     <string name="title_activity_activity_xin_wen">新闻信息</string>
     <string name="title_activity_activity_sheng_chan">生产简报</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
-    <string name="title_activity_test">Test</string>
 
+	<string name="str_youjian_sender">发件人：</string>
+	<string name="str_youjian_receiver">收件人：</string>
+	<string name="str_youjian_cc">抄    送：</string>
+	<string name="str_youjian_subject">主    题：</string>
 </resources>

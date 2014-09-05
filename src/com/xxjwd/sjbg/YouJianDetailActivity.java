@@ -128,7 +128,7 @@ public class YouJianDetailActivity extends AnimFragmentActivity {
 							"txt_youjian_attach_title" , "txt_youjian_attach_size" },
 
 					// ListItem的XML文件里面的两个TextView ID
-					new int[] { R.id.img_youjian_attach_image, R.id.txt_youjian_attach_title,R.id.txt_youjian_attach_size });
+					new int[] { R.id.ic_action_attachment, R.id.txt_youjian_attach_title,R.id.txt_youjian_attach_size });
 			lvAttachFiles.setAdapter(sad);
 			lvAttachFiles
 					.setOnItemClickListener(new AdapterView.OnItemClickListener() {
