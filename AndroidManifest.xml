@@ -79,6 +79,8 @@
         </activity>
         <activity android:name="com.xxjwd.sjbg.TuPianXinWenDetailActivity" >
         </activity>
+        <activity android:name="com.xxjwd.sjbg.YouJianNewActivity" >
+        </activity>
         <activity
             android:name="com.xxjwd.sjbg.GongWenSignActivity"
             android:label="@string/title_activity_gong_wen_qs" >

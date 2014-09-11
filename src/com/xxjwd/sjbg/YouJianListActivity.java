@@ -177,11 +177,11 @@ public class YouJianListActivity extends AnimFragmentActivity implements OnScrol
 	    public boolean onOptionsItemSelected(MenuItem item) {  
 	        switch(item.getItemId()){ 
 
-	        case R.id.gw_list_search:
-	            //openSearch();
+	        case R.id.youjian_list_new:
+	            openYouJianNew();
 	            
 	            return true; 
-	        case R.id.gw_list_refresh:
+	        case R.id.youjian_list_refresh:
 	        	doGetData(true);
 	        	return true;
 	        default: 
@@ -190,12 +190,19 @@ public class YouJianListActivity extends AnimFragmentActivity implements OnScrol
 	        return super.onOptionsItemSelected(item); 
 	    } 
 	 
-	 @Override
+	 private void openYouJianNew() {
+		// TODO Auto-generated method stub
+		Intent i = new Intent();
+		i.setClass(YouJianListActivity.this, YouJianNewActivity.class);
+		startActivity(i);
+	}
+
+	@Override
 	 public boolean onCreateOptionsMenu(Menu menu) {
 	     // Inflate the menu items for use in the action bar
-	    /* MenuInflater inflater = getMenuInflater();
-	     inflater.inflate(R.menu.gw_list_menu, menu);
-	     MenuItem searchItem = menu.findItem(R.id.gw_list_search);
+	     MenuInflater inflater = getMenuInflater();
+	     inflater.inflate(R.menu.youjian_list_menu, menu);
+	    /* MenuItem searchItem = menu.findItem(R.id.gw_list_search);
 			SearchView sv = (SearchView) searchItem.getActionView();
 			sv.setQueryHint("可按发件人或标题查询");
 			sv.setIconifiedByDefault(true);

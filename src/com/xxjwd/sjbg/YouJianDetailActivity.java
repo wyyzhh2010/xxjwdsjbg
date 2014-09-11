@@ -119,7 +119,7 @@ public class YouJianDetailActivity extends AnimFragmentActivity {
 			for (int i = 0; i < atts.length; i++) {
 				HashMap<String, Object> map = new HashMap<String, Object>();
 				map.put("txt_youjian_attach_title", atts[i].getFilename()); // 文字
-				map.put("img_youjian_attach_image", R.drawable.ic_email_attachment_small);// 图片
+				map.put("img_youjian_attach_image", R.drawable.ic_action_attachment);// 图片
 				map.put("txt_youjian_attach_size", atts[i].ShowFullSize()); // 附件大小
 				listItems.add(map);
 			}
@@ -128,7 +128,7 @@ public class YouJianDetailActivity extends AnimFragmentActivity {
 							"txt_youjian_attach_title" , "txt_youjian_attach_size" },
 
 					// ListItem的XML文件里面的两个TextView ID
-					new int[] { R.id.ic_action_attachment, R.id.txt_youjian_attach_title,R.id.txt_youjian_attach_size });
+					new int[] { R.id.img_youjian_attach_image, R.id.txt_youjian_attach_title,R.id.txt_youjian_attach_size });
 			lvAttachFiles.setAdapter(sad);
 			lvAttachFiles
 					.setOnItemClickListener(new AdapterView.OnItemClickListener() {

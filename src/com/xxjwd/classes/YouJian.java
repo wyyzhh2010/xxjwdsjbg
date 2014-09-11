@@ -30,6 +30,29 @@ public class YouJian implements KvmSerializable,Serializable {
 	private String attachment;
 	
 	
+	public String getString(String type)
+	{
+		switch (type)
+		{
+			case "to":
+			return this.to;
+			case "cc":
+				return this.cc;
+			case "bcc":
+				return this.bcc;
+			case "replyTo":
+				return this.replyTo;
+			case "from":
+				return this.from;
+			case "sender":
+				return this.sender;
+			case "attachment":
+				return this.attachment;
+				default:
+					return null;
+		}
+	}
+	
 	public YouJianFuJian[] getAttachments()
 	{
 		YouJianFuJian[] atts = StringUtil.StringToYouJianFuJian(attachment);

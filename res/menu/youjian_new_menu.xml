@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- Search, should appear as action button -->
+    <item
+        android:id="@+id/menu_youjian_new_send"
+      
+        android:icon="@drawable/ic_action_send_now"
+        android:showAsAction="ifRoom"
+        android:title="发送"/>
+    <!-- Settings, should always be in the overflow -->
+    <item
+        android:id="@+id/youjian_list_refresh"
+        android:icon="@drawable/ic_action_refresh"
+        android:showAsAction="ifRoom"
+        android:title="重置"/>
+
+</menu>

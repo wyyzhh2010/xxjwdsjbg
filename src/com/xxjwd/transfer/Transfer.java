@@ -26,7 +26,9 @@ import com.xxjwd.classes.UserGw;
 import com.xxjwd.classes.WenJianJia;
 import com.xxjwd.classes.XinWen;
 import com.xxjwd.classes.YouJian;
+import com.xxjwd.classes.YouJianDiZhi;
 import com.xxjwd.classes.YouJianFuJian;
+import com.xxjwd.classes.YouJianSend;
 import com.xxjwd.classes.YouJianSimple;
 import com.xxjwd.classes.ZbPerson;
 import com.zcj.lib.FakeX509TrustManager;
@@ -55,7 +57,8 @@ public class Transfer {
         if (args != null)
         for (Parameter para:args)
         {
-        	so.addProperty(para.getParaName(), para.getParaValue());  
+        	so.addProperty(para.getParaName(), para.getParaValue()); 
+        	
         }
         FakeX509TrustManager.allowAllSSL();
         HttpTransportSE transport = new HttpTransportSE(endPoint);  
@@ -74,7 +77,7 @@ public class Transfer {
         }
         envelope.dotNet = false;  
         // 等价于envelope.bodyOut = rpc;  
-        envelope.setOutputSoapObject(so);
+        
        
         if (rClass == null)
         {
@@ -84,6 +87,8 @@ public class Transfer {
         {
         	envelope.addMapping(nameSpace, rClass.getClass().getSimpleName() ,rClass.getClass());
         }
+
+        envelope.setOutputSoapObject(so);
         StringWriter   sw=new   StringWriter();  
         PrintWriter pw = new PrintWriter(sw);
         try {  
@@ -577,6 +582,35 @@ public class Transfer {
 		}
 		
 		return wjjs;
+        
+	}
+	
+	public static INT sendMail(int uid ,YouJian yj)
+	{
+
+		Parameter[] para = new Parameter[2];
+		para[0] = new Parameter("uid",uid);
+		para[1] = new Parameter("mm",yj);
+		return (INT) getWebService("邮件服务" ,"sendMail",para,new INT());
+		
+        
+	}
+	
+	public static INT sendMail(int uid ,int importance ,String subject,String body, String from ,String to,String cc,String bcc,String attachment)
+	{
+
+		Parameter[] para = new Parameter[9];
+		para[0] = new Parameter("uid",uid);
+		para[1] = new Parameter("importance",importance);
+		para[2] = new Parameter("subject",subject);
+		para[3] = new Parameter("body",body);
+		para[4] = new Parameter("from",from);
+		para[5] = new Parameter("to",to);
+		para[6] = new Parameter("cc",cc);
+		para[7] = new Parameter("bcc",bcc);
+		para[8] = new Parameter("attachment",attachment);
+		return (INT) getWebService("邮件服务" ,"sendMail1",para,new INT());
+		
         
 	}
 	
