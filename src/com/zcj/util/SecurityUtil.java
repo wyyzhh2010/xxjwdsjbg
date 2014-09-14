@@ -3,6 +3,7 @@ package com.zcj.util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+
 public class SecurityUtil {
 
 	public static String Encrypt(String code)
@@ -39,4 +40,6 @@ public class SecurityUtil {
 		m_szUniqueID = m_szUniqueID.toUpperCase();
 		return m_szUniqueID;
 	}
+	
+
 }

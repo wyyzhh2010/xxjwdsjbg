@@ -54,6 +54,7 @@ public class GongWenListActivity extends AnimFragmentActivity implements OnScrol
 		super.onCreate(savedInstanceState);  
 		setContentView(R.layout.pulltorefresh_listview);  
         app = (MyApp)getApplication();  
+        
         actionBar=getActionBar();
 		//使自定义的普通View能在title栏显示, actionBar.setCustomView能起作用.  
         

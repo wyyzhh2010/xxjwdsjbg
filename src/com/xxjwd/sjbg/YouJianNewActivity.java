@@ -1,6 +1,8 @@
 package com.xxjwd.sjbg;
 
 
+import java.util.List;
+
 import com.xxjwd.classes.INT;
 import com.xxjwd.classes.YouJian;
 import com.xxjwd.classes.YouJianDiZhi;
@@ -8,9 +10,11 @@ import com.xxjwd.classes.YouJianSend;
 import com.xxjwd.transfer.Transfer;
 import com.zcj.lib.AnimFragmentActivity;
 import com.zcj.lib.MyApp;
+import com.zcj.util.FileUtil;
 import com.zcj.util.StringUtil;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,7 +26,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
+import android.widget.LinearLayout.LayoutParams;
 
 
 public class YouJianNewActivity extends AnimFragmentActivity implements OnClickListener {
@@ -42,6 +48,8 @@ public class YouJianNewActivity extends AnimFragmentActivity implements OnClickL
 	 private static final int FAILED = -1;
 	 private boolean isCaogaoxiang=true;
 	 MyApp app;
+	 String base64="";
+	 String fileName = "";
 	   
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +58,8 @@ public class YouJianNewActivity extends AnimFragmentActivity implements OnClickL
 		setContentView(R.layout.youjian_send_new);
 		//init();
 		app = (MyApp)getApplication();
+		add_lianxiren=(ImageButton) findViewById(R.id.btn_email_open_constact);
+		add_lianxiren.setOnClickListener(this);
 	}
 
 	
@@ -80,8 +90,9 @@ public class YouJianNewActivity extends AnimFragmentActivity implements OnClickL
 			
 			break;
 		case R.id.btn_email_open_constact:
-			Intent intent=new Intent(YouJianNewActivity.this,YouJianNewActivity.class);
-			startActivityForResult(intent, 2);
+			//Intent intent=new Intent(YouJianNewActivity.this,YouJianNewActivity.class);
+			//startActivityForResult(intent, 2);
+			this.addAttachment();
 			break;
 		}
 		
@@ -116,6 +127,10 @@ public class YouJianNewActivity extends AnimFragmentActivity implements OnClickL
 		String cc = "";
 		String bcc = "";
 		String attachment = "";
+		if (!fileName.equals(""))
+		{
+			attachment = StringUtil.strFuHaoKaiShi + "0" + StringUtil.strFuHaoFenGe + fileName + StringUtil.strFuHaoFenGe + base64 + StringUtil.strFuHaoYouJian;
+		}
 		return Transfer.sendMail(uid ,importance,subject,body,from,to,cc,bcc,attachment);
 	}
 
@@ -130,5 +145,56 @@ public class YouJianNewActivity extends AnimFragmentActivity implements OnClickL
 		return super.onCreateOptionsMenu(menu);
 	}
 
+	
+	private void addAttachment() {
+		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+		//intent.setType("file/");
+		intent.setType("*/*"); 
+	    intent.addCategory(Intent.CATEGORY_OPENABLE);
+		startActivityForResult(intent, 1);
+		
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (resultCode == RESULT_OK) {
+			switch (requestCode) {
+			case 1:
+				Uri uri = null;
+				if (data != null) {
+					uri = data.getData();
+				}
+
+				String path = uri.getPath();
+				fileName =path.substring(path.lastIndexOf("/") + 1 ,path.length());
+				Toast.makeText(YouJianNewActivity.this, fileName, Toast.LENGTH_LONG).show();
+				try {
+					base64 = FileUtil.encodeBase64File(path);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			}
+		}
+		
+		/**
+		 * 澶氫釜鑱旂郴浜�
+		 */
+		if(requestCode==2){
+			List<String> chooseUsers=data.getStringArrayListExtra("chooseUsers");
+			StringBuilder str=new StringBuilder();
+			for(int i=0;i<chooseUsers.size();i++){
+				if(i==chooseUsers.size()-1){
+					str.append("<"+chooseUsers.get(i)+">");
+				}else{
+					str.append("<"+chooseUsers.get(i)+">,");
+				}
+			}
+			mail_to.setText(str.toString());
+			
+		}
+	}
 	
 }
