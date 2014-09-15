@@ -4,41 +4,84 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
-        android:text="主题："
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:orientation="horizontal"
+        android:layout_margin="2sp" >
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        android:text="序号："
-        android:textColor="#000000"
-        android:textSize="14sp" />
+        <TextView
+            android:id="@+id/txt_youjian_listitem_subject"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="主题："
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
-        android:text="发件时间："
-        android:textColor="#000000"
-        android:textSize="14sp" />
+        android:orientation="horizontal"
+        android:layout_margin="2sp" >
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="fill_parent"
+         <TextView
+            android:id="@+id/txt_youjian_listitem_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="发件时间："
+            android:textColor="#000000"
+            android:textSize="16sp" />
+         <TextView
+            android:id="@+id/txt_youjian_listitem_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="序号："
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+       
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
-        android:text="发件人："
-        android:textColor="#000000"
-        android:textSize="14sp" />
+        android:orientation="horizontal"
+        android:layout_margin="2sp" >
+
+        <TextView
+            android:id="@+id/txt_youjian_listitem_sender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="发件人："
+            android:textColor="#000000"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="2sp" >
+
+        <TextView
+            android:id="@+id/txt_youjian_listitem_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="邮件大小："
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/img_youjian_attach_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_attachment" />
+    </LinearLayout>
 
 </LinearLayout>

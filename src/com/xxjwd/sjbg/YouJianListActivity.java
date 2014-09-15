@@ -81,7 +81,7 @@ public class YouJianListActivity extends AnimFragmentActivity implements OnScrol
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				// TODO Auto-generated method stub
+			
 				
     			ListView listView = (ListView)parent;
     			YouJianSimple yj = (YouJianSimple) listView.getItemAtPosition(position);

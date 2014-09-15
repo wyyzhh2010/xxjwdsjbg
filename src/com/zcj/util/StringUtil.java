@@ -13,6 +13,15 @@ public class StringUtil {
 	public static String strFuHaoFenGe = "''";
 	public static String strFuHaoYouJian = ";;";
 	
+	public static String ShowFullSize(int filesize)
+	{
+		
+		if (filesize <= 0) return "N/A";
+		else if (filesize < 1024 ) return filesize + "B";
+		else if (filesize < 1024 * 1024) return (filesize / 1024) + "KB";
+		else return (filesize / 1024 /1204) + "MB";
+	}
+	
 	public static YouJianFuJian[] StringToYouJianFuJian(String strYjfj)
 	{
 		if (strYjfj.contains(strFuHaoKaiShi) == false) return null;

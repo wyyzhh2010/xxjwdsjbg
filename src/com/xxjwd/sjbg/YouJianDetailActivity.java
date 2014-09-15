@@ -120,7 +120,7 @@ public class YouJianDetailActivity extends AnimFragmentActivity {
 				HashMap<String, Object> map = new HashMap<String, Object>();
 				map.put("txt_youjian_attach_title", atts[i].getFilename()); // 文字
 				map.put("img_youjian_attach_image", R.drawable.ic_action_attachment);// 图片
-				map.put("txt_youjian_attach_size", atts[i].ShowFullSize()); // 附件大小
+				map.put("txt_youjian_attach_size", StringUtil.ShowFullSize( atts[i].getFilesize())); // 附件大小
 				listItems.add(map);
 			}
 			SimpleAdapter sad = new SimpleAdapter(this, listItems,

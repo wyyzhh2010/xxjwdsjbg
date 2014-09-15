@@ -93,14 +93,7 @@ public class YouJianFuJian implements KvmSerializable,Serializable {
 		return filename.substring(1,filename.lastIndexOf(".") - 1) ;
 	}
 	
-	public String ShowFullSize()
-	{
-		
-		if (filesize <= 0) return "N/A";
-		else if (filesize < 1024 ) return filesize + "B";
-		else if (filesize < 1024 * 1024) return (filesize / 1024) + "KB";
-		else return (filesize / 1024 /1204) + "MB";
-	}
+
 	
 	public void LoadFrom(String string) {
 		// TODO Auto-generated method stub
