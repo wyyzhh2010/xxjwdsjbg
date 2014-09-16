@@ -109,13 +109,18 @@ public class YouJianDetailActivity extends AnimFragmentActivity {
 		WebView wvBody = (WebView)findViewById(R.id.wv_mailcontent);
 		wvBody.setVisibility(View.VISIBLE);
 		wvBody.loadDataWithBaseURL(null, yj.getBody(), "text/html", "utf-8", null);
+		wvBody.setBackgroundColor(0);
+		wvBody.getSettings().setTextZoom(150);
 		MyListView lvAttachFiles = (MyListView) findViewById(R.id.lv_youjian_detail_AttachFiles);
 		lvAttachFiles.setVisibility(View.GONE);
+		mi.setVisible(false);
 		ArrayList<HashMap<String, Object>> listItems = new ArrayList<HashMap<String, Object>>();
 		
 		YouJianFuJian[] atts = yj.getAttachments();
 		if (atts != null && atts.length > 0) {
 			lvAttachFiles.setVisibility(View.VISIBLE);
+			
+			mi.setVisible(true);
 			for (int i = 0; i < atts.length; i++) {
 				HashMap<String, Object> map = new HashMap<String, Object>();
 				map.put("txt_youjian_attach_title", atts[i].getFilename()); // 文字
@@ -128,8 +133,10 @@ public class YouJianDetailActivity extends AnimFragmentActivity {
 							"txt_youjian_attach_title" , "txt_youjian_attach_size" },
 
 					// ListItem的XML文件里面的两个TextView ID
+							
 					new int[] { R.id.img_youjian_attach_image, R.id.txt_youjian_attach_title,R.id.txt_youjian_attach_size });
 			lvAttachFiles.setAdapter(sad);
+			
 			lvAttachFiles
 					.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -169,8 +176,8 @@ public class YouJianDetailActivity extends AnimFragmentActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu items for use in the action bar
 		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.gw_details_menu, menu);
-		mi = (MenuItem) menu.findItem(R.id.gw_details_sign);
+		inflater.inflate(R.menu.youjian_detail_menu, menu);
+		mi = (MenuItem) menu.findItem(R.id.youjian_detail_download_all);
 		return super.onCreateOptionsMenu(menu);
 	}
 

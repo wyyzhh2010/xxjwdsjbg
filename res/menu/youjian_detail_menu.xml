@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- Search, should appear as action button -->
+    <item
+        android:id="@+id/youjian_detail_reply"
+      
+        android:icon="@drawable/ic_action_reply"
+        android:showAsAction="ifRoom"
+        android:title="回复邮件"/>
+    <!-- Settings, should always be in the overflow -->
+    <item
+        android:id="@+id/youjian_detail_download_all"
+        android:icon="@drawable/ic_action_download"
+        android:showAsAction="ifRoom"
+        android:visible="false"
+        android:title="下载全部附件"/>
+
+</menu>

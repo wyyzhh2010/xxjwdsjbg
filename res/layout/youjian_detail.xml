@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/paper01"
     tools:context=".MailContentActivity" >
    
         <TextView
@@ -12,7 +13,7 @@
         
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dip"
-        android:textSize="18sp"
+        android:textSize="22sp"
         android:textIsSelectable="true" />
     
 
@@ -24,6 +25,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dip"
         android:textIsSelectable="true"
+        android:textSize="18sp"
         android:layout_below="@+id/txt_youjian_detail_subject" />
     <TextView
         android:id="@+id/txt_youjian_detail_to"
@@ -33,6 +35,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dip"
         android:textIsSelectable="true"
+        android:textSize="18sp"
         android:layout_below="@+id/txt_youjian_detail_from" />
 <TextView
         android:id="@+id/txt_youjian_detail_cc"
@@ -42,6 +45,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dip"
         android:textIsSelectable="true"
+        android:textSize="18sp"
         android:layout_below="@+id/txt_youjian_detail_to" />
 <TextView
         android:id="@+id/txt_youjian_detail_replyto"
@@ -51,6 +55,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dip"
         android:textIsSelectable="true"
+        android:textSize="18sp"
         android:layout_below="@+id/txt_youjian_detail_cc" />
 <TextView
         android:id="@+id/txt_youjian_detail_date"
@@ -60,6 +65,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dip"
         android:textIsSelectable="true"
+        android:textSize="18sp"
         android:layout_below="@+id/txt_youjian_detail_replyto" />
    <com.zcj.lib.MyListView
             android:id="@+id/lv_youjian_detail_AttachFiles"
@@ -74,7 +80,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/lv_youjian_detail_AttachFiles"
         android:layout_margin="5dp"
-        android:background="@color/pink"
+        android:textSize="18sp"
         android:visibility="gone" />
 
     <TextView
@@ -84,6 +90,7 @@
         android:layout_below="@+id/lv_youjian_detail_AttachFiles"
         android:layout_margin="5dp"
         android:ems="10"
+        android:textSize="18sp"
         android:gravity="top"
         android:textIsSelectable="true" />
 
